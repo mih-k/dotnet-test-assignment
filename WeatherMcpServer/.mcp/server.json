@@ -1,20 +1,40 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
-  "description": "<your description here>",
-  "name": "io.github.<your GitHub username here>/<your repo name>",
+  "description": "Real Weather MCP Server providing current weather, forecasts, and alerts using OpenWeatherMap API.",
+  "name": "io.github.mih-k/dotnet-test-assignment",
   "packages": [
     {
       "registry_name": "nuget",
-      "name": "<your package ID here>",
+      "name": "KurnosovTeam.WeatherMcpServer",
       "version": "0.1.0-beta",
       "package_arguments": [],
-      "environment_variables": []
+      "environment_variables": [
+        {
+          "name": "WeatherApi__ApiKey",
+          "description": "API key for OpenWeatherMap API",
+          "required": true
+        }
+      ]
     }
   ],
   "repository": {
-    "url": "https://github.com/<your GitHub username here>/<your repo name>",
+    "url": "https://github.com/mih-k/dotnet-test-assignment",
     "source": "github"
   },
+  "tools": [
+    {
+      "name": "GetCurrentWeather",
+      "description": "Gets current weather conditions for the specified city."
+    },
+    {
+      "name": "GetWeatherForecast",
+      "description": "Gets a multi-day weather forecast for the specified city."
+    },
+    {
+      "name": "GetWeatherAlerts",
+      "description": "Gets active weather alerts for the specified city, if available."
+    }
+  ],
   "version_detail": {
     "version": "0.1.0-beta"
   }

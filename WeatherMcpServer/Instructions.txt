@@ -1,0 +1,92 @@
+﻿# WeatherMcpServer
+
+A Model Context Protocol (MCP) server that provides weather information via the OpenWeather API.
+
+## Features
+
+- Get current weather for a city.
+- Get short-term forecasts (1–5 days).
+- Get active weather alerts from government sources.
+- Designed to work with any MCP-compatible client.
+
+## Requirements
+
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- An API key from [OpenWeather](https://openweathermap.org/api).
+
+## Configuration
+
+The server reads configuration from environment variables or `appsettings.json`.
+
+### Environment variables
+
+- `WeatherApi__ApiKey` — your OpenWeather API key.
+- `WeatherApi__BaseUrl` — optional; defaults to `https://api.openweathermap.org/data/3.0/`.
+
+Example:
+
+```
+set WeatherApi__ApiKey=your_api_key_here
+```
+
+Or in PowerShell:
+
+```
+$env:WeatherApi__ApiKey="your_api_key_here"
+```
+
+## Running the Server
+
+```
+dotnet run --project WeatherMcpServer
+```
+
+The server uses **stdio** to communicate with MCP clients.
+
+---
+
+## Demo Client
+
+A simple interactive console client (`McpClientDemo`) is included to test the `WeatherMcpServer` via MCP.
+
+### Running the Demo
+
+1. Build the solution:
+
+```
+dotnet build
+```
+
+2. Run the Weather MCP server in one terminal:
+
+```
+dotnet run --project WeatherMcpServer
+```
+
+3. In another terminal, run the demo client:
+
+```
+dotnet run --project McpClientDemo
+```
+
+### How It Works
+
+- On start, the client connects to the server over **stdio**.
+- The server responds with its available tools (e.g., `get_current_weather`).
+- You can type a city name (optionally with a country code, e.g., `London,GB`) and the client will call the `get_current_weather` tool.
+- The server returns the weather information, which is printed in the console.
+- Press **Enter** on an empty line to exit.
+
+---
+
+## Running Tests
+
+```
+dotnet test
+```
+
+Make sure you have restored packages before running tests:
+
+```
+dotnet restore
+```

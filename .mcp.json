@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "WeatherMcpServer": {
+      "type": "stdio",
+      "command": ".\\WeatherMcpServer\\bin\\Release\\net8.0\\WeatherMcpServer.exe",
+      "args": [],
+      "environment": {
+        "WeatherApi__ApiKey": ""
+      }
+    }
+  }
+}
